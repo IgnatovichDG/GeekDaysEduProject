@@ -3571,8 +3571,8 @@ fieldset[disabled] .navbar .navbar-link:focus {
 
 @media (min-width: 767px) {
   .navbar-fixed-top {
-    /*padding: 10px 0;
-    background-color: transparent;*/
+    padding: 10px 0;
+    /*background-color: transparent;*/
     -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
     -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
     transition: background .5s ease-in-out, padding .5s ease-in-out;
@@ -3585,7 +3585,7 @@ fieldset[disabled] .navbar .navbar-link:focus {
   }
   .top-nav-collapse {
     padding: 0;
-    background-color: inherit;
+    /*background-color: inherit;*/
   }
   .top-nav-collapse .navbar-nav > li > a {
     color: #fff;
