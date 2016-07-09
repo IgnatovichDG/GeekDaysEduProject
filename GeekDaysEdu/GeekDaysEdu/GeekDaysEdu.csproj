@@ -174,7 +174,12 @@
     <Compile Include="Migrations\201607091524431_Initial.Designer.cs">
       <DependentUpon>201607091524431_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607091531076_AddedCategories.cs" />
+    <Compile Include="Migrations\201607091531076_AddedCategories.Designer.cs">
+      <DependentUpon>201607091531076_AddedCategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Services\Context.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -306,6 +311,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201607091524431_Initial.resx">
       <DependentUpon>201607091524431_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607091531076_AddedCategories.resx">
+      <DependentUpon>201607091531076_AddedCategories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
