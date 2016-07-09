@@ -1,0 +1,67 @@
+﻿@model GeekDaysEdu.Models.ResourceModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ResourceModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.URL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disciption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disciption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkToImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkToImg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ResourceId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -169,7 +169,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\ResourceController.cs" />
+    <Compile Include="Controllers\ResourceModelsController.cs" />
     <Compile Include="Migrations\201607091524431_Initial.cs" />
     <Compile Include="Migrations\201607091524431_Initial.Designer.cs">
       <DependentUpon>201607091524431_Initial.cs</DependentUpon>
@@ -290,7 +290,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\tsconfig.json" />
-    <Content Include="Views\Resource\Index.cshtml" />
+    <Content Include="Views\ResourceModels\Create.cshtml" />
+    <Content Include="Views\ResourceModels\Delete.cshtml" />
+    <Content Include="Views\ResourceModels\Details.cshtml" />
+    <Content Include="Views\ResourceModels\Edit.cshtml" />
+    <Content Include="Views\ResourceModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

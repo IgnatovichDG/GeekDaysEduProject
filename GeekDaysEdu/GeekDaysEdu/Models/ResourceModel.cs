@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace GeekDaysEdu.Models
 {
@@ -24,5 +25,10 @@ namespace GeekDaysEdu.Models
         public List<CategoryModel> Categories { get; set; }
 
         public List<string> Tags { get; set; }
+    }
+
+    public class ResourceDbContext : DbContext
+    {
+        public DbSet<ResourceModel> Resources { get; set; }
     }
 }
