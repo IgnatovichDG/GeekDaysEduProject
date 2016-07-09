@@ -308,6 +308,7 @@
     <Content Include="Views\ResourceModels\Edit.cshtml" />
     <Content Include="Views\ResourceModels\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Categories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

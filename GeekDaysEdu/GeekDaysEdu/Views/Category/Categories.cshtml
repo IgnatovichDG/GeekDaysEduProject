@@ -1,0 +1,18 @@
+﻿@model System.Collections.Generic.List<GeekDaysEdu.Models.CategoryModel>
+
+@{
+    ViewBag.Title = "Категории";
+}
+
+<div class="container">
+    <h4>Доступны курсы по следующим категориям:</h4>
+    <hr>
+    <div class="row">
+        @foreach (var cat in Model)
+        {
+            <div class="col-md-3"><a href="~/Category/Index/@cat.CategoryID">
+                <div class="btn btn-info" style="width: 100%">@cat.Name</div></a>
+            </div>
+        }
+    </div>
+</div>
