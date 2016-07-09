@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,14 +19,19 @@ namespace GeekDaysEdu.Controllers
                 int idInt = int.Parse(id);
                 using (var db = new Context())
                 {
-                    courses = db.ResourceModels.Where(r => r.Category.CategoryID == idInt).ToList();
+                    courses = db.ResourceModels
+                        .Where(r => r.Category.CategoryID == idInt)
+                        .Include(r => r.Category)
+                        .ToList();
                 }
             }
             catch (Exception)
             {
                 using (var db = new Context())
                 {
-                    courses = db.ResourceModels.ToList();
+                    courses = db.ResourceModels
+                        .Include(r => r.Category)
+                        .ToList();
                 }
             }
 
