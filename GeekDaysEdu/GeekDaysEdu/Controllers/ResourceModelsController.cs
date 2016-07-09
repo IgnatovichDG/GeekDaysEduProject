@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GeekDaysEdu.Models;
+using Microsoft.AspNet.Identity;
 
 namespace GeekDaysEdu.Controllers
 {
@@ -32,6 +33,10 @@ namespace GeekDaysEdu.Controllers
             {
                 return HttpNotFound();
             }
+
+            var currentUserId = User.Identity.GetUserId();
+            ViewBag.Taken = db.LinkUsersCourses.Any(l => l.UserId == currentUserId && l.ResourceModel.ResourceId == resourceModel.ResourceId);
+
             return View(resourceModel);
         }
 
@@ -122,6 +127,19 @@ namespace GeekDaysEdu.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [Authorize]
+        public void TakeCourse(string id)
+        {
+            int courseId = int.Parse(id);
+            var course = db.ResourceModels.Find(courseId);
+            db.LinkUsersCourses.Add(new Link()
+            {
+                ResourceModel = course,
+                UserId = User.Identity.GetUserId(),
+                Status = 0
+            });
         }
     }
 }
