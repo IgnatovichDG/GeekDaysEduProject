@@ -25,5 +25,17 @@ namespace GeekDaysEdu.Models
         public CategoryModel Category { get; set; }
 
         public List<string> Tags { get; set; }
+
+        public string getSmallDiscr()
+        {
+            string result = Disciption;
+            if (result.Length > 140)
+            {
+                int i = 141;
+                while (result[i] != ' ') { i--; }
+                result = result.Substring(0, i) + "...";
+            }
+            return result;
+        }
     }
 }
