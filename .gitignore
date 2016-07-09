@@ -191,3 +191,4 @@ $RECYCLE.BIN/
 
 #Не игнорировать файлы roundhouse
 !rh.exe
+/GeekDaysEdu/GeekDaysEdu/App_Data
