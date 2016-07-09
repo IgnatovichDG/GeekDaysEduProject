@@ -8,11 +8,20 @@
 <h2>О курсе</h2>
 
 <div>
-    <h4>@Html.DisplayFor(model => model.Name)</h4>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#">
+                <img src=@Model.LinkToImg alt="...">
+            </a>
+        </div>
+        <div class="col-md-5">
+            <h4>@Html.DisplayFor(model => model.Name)</h4>
+        </div>
+    </div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Type)
+            Тип курса
         </dt>
 
         <dd>
@@ -20,15 +29,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.URL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.URL)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Disciption)
+            Описание
         </dt>
 
         <dd>
@@ -36,11 +37,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LinkToImg)
+            Ссылка на курс
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LinkToImg)
+            <a href="@Html.DisplayFor(model => model.URL)">тыкай</a>
         </dd>
 
         <dt>
