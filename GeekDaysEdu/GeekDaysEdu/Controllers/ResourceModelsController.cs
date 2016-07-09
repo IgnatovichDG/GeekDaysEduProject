@@ -35,7 +35,7 @@ namespace GeekDaysEdu.Controllers
             }
 
             var currentUserId = User.Identity.GetUserId();
-            ViewBag.Taken = db.LinkUsersCourses.Any(l => l.UserId == currentUserId && l.ResourceModel.ResourceId == resourceModel.ResourceId);
+            ViewBag.Taken = db.LinkUsersCourses.Any(l => l.UserId == currentUserId && l.ResourceModel.ResourceId == id);
 
             return View(resourceModel);
         }
@@ -130,7 +130,7 @@ namespace GeekDaysEdu.Controllers
         }
 
         [Authorize]
-        public void TakeCourse(string id)
+        public ActionResult TakeCourse(string id)
         {
             int courseId = int.Parse(id);
             var course = db.ResourceModels.Find(courseId);
@@ -140,6 +140,8 @@ namespace GeekDaysEdu.Controllers
                 UserId = User.Identity.GetUserId(),
                 Status = 0
             });
+            db.SaveChanges();
+            return RedirectToAction("Categories", "Category");
         }
     }
 }
