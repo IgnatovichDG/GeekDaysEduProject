@@ -6,6 +6,7 @@ namespace GeekDaysEdu.Models
 {
     public class ResourceModel
     {
+        [Key]
         public int ResourceId { get; set; }
 
         public string Name { get; set; }
@@ -20,7 +21,7 @@ namespace GeekDaysEdu.Models
 
         public double Score { get; set; }
 
-        public List<string> Categories { get; set; }
+        public List<CategoryModel> Categories { get; set; }
 
         public List<string> Tags { get; set; }
     }
