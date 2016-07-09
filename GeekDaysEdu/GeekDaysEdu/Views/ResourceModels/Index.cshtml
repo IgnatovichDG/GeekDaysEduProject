@@ -10,55 +10,18 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.URL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Disciption)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LinkToImg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Score)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.URL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Disciption)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LinkToImg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Score)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ResourceId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ResourceId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ResourceId })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail" style="height: 600px">
+                <img src=@item.LinkToImg alt="..." style="width: 150px; height: 150px">
+                <div class="caption">
+                    <h4>@item.Name</h4>
+                    <p>@item.getSmallDiscr()</p>
+                    <p><a href=@Url.Action("Details", new { id = item.ResourceId }) class="btn btn-primary" role="button">Подробнее</a></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
