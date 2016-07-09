@@ -22,7 +22,7 @@ namespace GeekDaysEdu.Models
 
         public double Score { get; set; }
 
-        public List<CategoryModel> Categories { get; set; }
+        public CategoryModel Category { get; set; }
 
         public List<string> Tags { get; set; }
     }

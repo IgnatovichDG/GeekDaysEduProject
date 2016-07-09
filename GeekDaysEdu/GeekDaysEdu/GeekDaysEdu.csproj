@@ -178,6 +178,10 @@
     <Compile Include="Migrations\201607091531076_AddedCategories.Designer.cs">
       <DependentUpon>201607091531076_AddedCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607091616235_NewConnectionBetweenCategoryAndCourse.cs" />
+    <Compile Include="Migrations\201607091616235_NewConnectionBetweenCategoryAndCourse.Designer.cs">
+      <DependentUpon>201607091616235_NewConnectionBetweenCategoryAndCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Services\Context.cs" />
@@ -318,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607091531076_AddedCategories.resx">
       <DependentUpon>201607091531076_AddedCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607091616235_NewConnectionBetweenCategoryAndCourse.resx">
+      <DependentUpon>201607091616235_NewConnectionBetweenCategoryAndCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
