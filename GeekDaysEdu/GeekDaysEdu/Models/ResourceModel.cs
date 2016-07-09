@@ -23,8 +23,5 @@ namespace GeekDaysEdu.Models
         public List<string> Categories { get; set; }
 
         public List<string> Tags { get; set; }
-
     }
-
-
 }

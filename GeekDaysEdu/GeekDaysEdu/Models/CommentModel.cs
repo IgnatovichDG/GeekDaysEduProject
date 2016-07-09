@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GeekDaysEdu.Models
 {
-    public class Comment
+    public class CommentModel
     {
         [Key]
         public string CommentID { get; set; }
