@@ -28,6 +28,13 @@ namespace GeekDaysEdu
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/mdb.css"));
+
+            bundles.Add(new StyleBundle("~/Content/listing/css").Include(
+                "~/Content/listing/bootstrap.css",
+                "~/Content/listing/mdb.css",
+                "~/Content/listing/style.css"
+                ));
+
         }
     }
 }

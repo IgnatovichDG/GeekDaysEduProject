@@ -4040,7 +4040,7 @@ small {
 }
 
 .card .card-title {
-  color: #fff;
+  color: #808080;
   font-size: 24px;
   font-weight: 300;
 }
@@ -4123,6 +4123,7 @@ small {
   bottom: 0;
   left: 0;
   padding: 20px;
+
 }
 
 .card .card-content {

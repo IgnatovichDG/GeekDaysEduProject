@@ -169,6 +169,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ResourceModelsController.cs" />
     <Compile Include="Migrations\201607091524431_Initial.cs" />
     <Compile Include="Migrations\201607091524431_Initial.Designer.cs">
@@ -208,6 +209,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\listing\bootstrap.css" />
+    <Content Include="Content\listing\mdb.css" />
+    <Content Include="Content\listing\style.css" />
     <Content Include="Content\mdb.css" />
     <Content Include="Content\mdb.min.css" />
     <Content Include="favicon.ico" />
@@ -303,6 +307,7 @@
     <Content Include="Views\ResourceModels\Details.cshtml" />
     <Content Include="Views\ResourceModels\Edit.cshtml" />
     <Content Include="Views\ResourceModels\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
