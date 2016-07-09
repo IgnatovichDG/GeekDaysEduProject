@@ -12,12 +12,12 @@ namespace GeekDaysEdu.Controllers
 {
     public class ResourceModelsController : Controller
     {
-        private ResourceDbContext db = new ResourceDbContext();
+        private Context db = new Context();
 
         // GET: ResourceModels
         public ActionResult Index()
         {
-            return View(db.Resources.ToList());
+            return View(db.ResourceModels.ToList());
         }
 
         // GET: ResourceModels/Details/5
@@ -27,7 +27,7 @@ namespace GeekDaysEdu.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ResourceModel resourceModel = db.Resources.Find(id);
+            ResourceModel resourceModel = db.ResourceModels.Find(id);
             if (resourceModel == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace GeekDaysEdu.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Resources.Add(resourceModel);
+                db.ResourceModels.Add(resourceModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace GeekDaysEdu.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ResourceModel resourceModel = db.Resources.Find(id);
+            ResourceModel resourceModel = db.ResourceModels.Find(id);
             if (resourceModel == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace GeekDaysEdu.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ResourceModel resourceModel = db.Resources.Find(id);
+            ResourceModel resourceModel = db.ResourceModels.Find(id);
             if (resourceModel == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace GeekDaysEdu.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ResourceModel resourceModel = db.Resources.Find(id);
-            db.Resources.Remove(resourceModel);
+            ResourceModel resourceModel = db.ResourceModels.Find(id);
+            db.ResourceModels.Remove(resourceModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

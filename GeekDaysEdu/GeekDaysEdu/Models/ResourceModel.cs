@@ -26,9 +26,4 @@ namespace GeekDaysEdu.Models
 
         public List<string> Tags { get; set; }
     }
-
-    public class ResourceDbContext : DbContext
-    {
-        public DbSet<ResourceModel> Resources { get; set; }
-    }
 }
