@@ -6,6 +6,7 @@ namespace GeekDaysEdu.Models
 {
     public class ResourceModel
     {
+        [Key]
         public int ResourceId { get; set; }
 
         public string Name { get; set; }
