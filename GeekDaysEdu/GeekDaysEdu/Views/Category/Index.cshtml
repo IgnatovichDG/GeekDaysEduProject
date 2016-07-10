@@ -12,21 +12,22 @@
 <main>
     <!--Main layout-->
     <div class="container">
-
-        <!--Page heading-->
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="h1-responsive">
-                    Page heading
-                    <small class="text-muted">secondary text</small>
-                </h1>
+        @if (Model.Any())
+        {
+            <!--Page heading-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="h1-responsive">
+                        Курсы по категории
+                        <small class="text-muted">@Model[0].Category.Name</small>
+                    </h1>
+                </div>
             </div>
-        </div>
-        <!--/.Page heading-->
-        <hr>
+            <!--/.Page heading-->
+            <hr>
 
-        <!--First row-->
-        <div class="row">
+            <!--First row-->
+            <div class="row">
             <!--First column-->
             @foreach (var res in Model)
             {
@@ -49,7 +50,7 @@
                             <!--Text-->
                             <p class="card-text">Просмотрите курс, нажав на кнопку ниже...</p>
                             <div class="read-more">
-                                <a href="#!" class="btn btn-primary">Просмотр</a>
+                                <a href="~/ResourceModels/Details/@res.ResourceId" class="btn btn-primary">Просмотр</a>
                             </div>
                         </div>
                         <!--/.Card content-->
@@ -58,184 +59,18 @@
                     <!--/.Card-->
                 </div>
             }
-            @*<div class="col-md-4">
-                        <!--Card-->
-                        <div class="card">
-
-                            <!--Card image-->
-                            <div class="view overlay hm-white-slight">
-                                <img src="http://mdbootstrap.com/images/regular/nature/img%20(10).jpg" class="img-fluid" alt="">
-                                <a href="#!">
-                                    <div class="mask"></div>
-                                </a>
-                            </div>
-                            <!--/.Card image-->
-                            <!--Card content-->
-                            <div class="card-block">
-                                <!--Title-->
-                                <h4 class="card-title">Card title</h4>
-                                <!--Text-->
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <div class="read-more">
-                                    <a href="#!" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                            <!--/.Card content-->
-
-                        </div>
-                        <!--/.Card-->
-                    </div>
-                    <!--/.First column-->
-                    <!--Second column-->
-                    <div class="col-md-4">
-                        <!--Card-->
-                        <div class="card">
-
-                            <!--Card image-->
-                            <div class="view overlay hm-white-slight">
-                                <img src="http://mdbootstrap.com/images/regular/people/img%20(2).jpg" class="img-fluid" alt="">
-                                <a href="#!">
-                                    <div class="mask"></div>
-                                </a>
-                            </div>
-                            <!--/.Card image-->
-                            <!--Card content-->
-                            <div class="card-block">
-                                <!--Title-->
-                                <h4 class="card-title">Card title</h4>
-                                <!--Text-->
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <div class="read-more">
-                                    <a href="#!" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                            <!--/.Card content-->
-
-                        </div>
-                        <!--/.Card-->
-                    </div>
-                    <!--/.Second column-->
-                    <!--Third column-->
-                    <div class="col-md-4">
-                        <!--Card-->
-                        <div class="card">
-
-                            <!--Card image-->
-                            <div class="view overlay hm-white-slight">
-                                <img src="http://mdbootstrap.com/images/regular/nature/img%20(18).jpg" class="img-fluid" alt="">
-                                <a href="#!">
-                                    <div class="mask"></div>
-                                </a>
-                            </div>
-                            <!--/.Card image-->
-                            <!--Card content-->
-                            <div class="card-block">
-                                <!--Title-->
-                                <h4 class="card-title">Card title</h4>
-                                <!--Text-->
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <div class="read-more">
-                                    <a href="#!" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                            <!--/.Card content-->
-
-                        </div>
-                        <!--/.Card-->
-                    </div>
-                    <!--/.Third column-->
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="h1-responsive">
+                        Курсов в данной категории не найдено!
+                    </h1>
                 </div>
-                <!--/.First row-->
-                <!--Second row-->
-                <div class="row">
-                    <!--First column-->
-                    <div class="col-md-4">
-                        <!--Card-->
-                        <div class="card">
-
-                            <!--Card image-->
-                            <div class="view overlay hm-white-slight">
-                                <img src="http://mdbootstrap.com/images/regular/people/img%20(6).jpg" class="img-fluid" alt="">
-                                <a href="#!">
-                                    <div class="mask"></div>
-                                </a>
-                            </div>
-                            <!--/.Card image-->
-                            <!--Card content-->
-                            <div class="card-block">
-                                <!--Title-->
-                                <h4 class="card-title">Card title</h4>
-                                <!--Text-->
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <div class="read-more">
-                                    <a href="#!" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                            <!--/.Card content-->
-
-                        </div>
-                        <!--/.Card-->
-                    </div>
-                    <!--/.First column-->
-                    <!--Second column-->
-                    <div class="col-md-4">
-                        <!--Card-->
-                        <div class="card">
-
-                            <!--Card image-->
-                            <div class="view overlay hm-white-slight">
-                                <img src="http://mdbootstrap.com/images/regular/nature/img%20(14).jpg" class="img-fluid" alt="">
-                                <a href="#!">
-                                    <div class="mask"></div>
-                                </a>
-                            </div>
-                            <!--/.Card image-->
-                            <!--Card content-->
-                            <div class="card-block">
-                                <!--Title-->
-                                <h4 class="card-title">Card title</h4>
-                                <!--Text-->
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <div class="read-more">
-                                    <a href="#!" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                            <!--/.Card content-->
-
-                        </div>
-                        <!--/.Card-->
-                    </div>
-                    <!--Second column-->
-                    <!--Third column-->
-                    <div class="col-md-4">
-                        <!--Card-->
-                        <div class="card">
-
-                            <!--Card image-->
-                            <div class="view overlay hm-white-slight">
-                                <img src="http://mdbootstrap.com/images/regular/people/img%20(11).jpg" class="img-fluid" alt="">
-                                <a href="#!">
-                                    <div class="mask"></div>
-                                </a>
-                            </div>
-                            <!--/.Card image-->
-                            <!--Card content-->
-                            <div class="card-block">
-                                <!--Title-->
-                                <h4 class="card-title">Card title</h4>
-                                <!--Text-->
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <div class="read-more">
-                                    <a href="#!" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                            <!--/.Card content-->
-
-                        </div>
-                        <!--/.Card-->
-                    </div>
-                    <!--/.Third column-->*@
-        </div>
+            </div>
+        }
         <!--/.Second row-->
     </div>
     <!--/.Main layout-->

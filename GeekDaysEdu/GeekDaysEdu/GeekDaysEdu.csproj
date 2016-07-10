@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ResourceModelsController.cs" />
     <Compile Include="Migrations\201607091524431_Initial.cs" />
     <Compile Include="Migrations\201607091524431_Initial.Designer.cs">
@@ -187,8 +188,18 @@
     <Compile Include="Migrations\201607091711396_123.Designer.cs">
       <DependentUpon>201607091711396_123.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607092235533_LinkForCourses.cs" />
+    <Compile Include="Migrations\201607092235533_LinkForCourses.Designer.cs">
+      <DependentUpon>201607092235533_LinkForCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607100325172_ScheduleEntity.cs" />
+    <Compile Include="Migrations\201607100325172_ScheduleEntity.Designer.cs">
+      <DependentUpon>201607100325172_ScheduleEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\Link.cs" />
+    <Compile Include="Models\Schedule.cs" />
     <Compile Include="Services\Context.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -308,6 +319,10 @@
     <Content Include="Views\ResourceModels\Edit.cshtml" />
     <Content Include="Views\ResourceModels\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Categories.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\ScheduleCourse.cshtml" />
+    <Content Include="Views\Profile\Schedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,6 +352,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607091711396_123.resx">
       <DependentUpon>201607091711396_123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607092235533_LinkForCourses.resx">
+      <DependentUpon>201607092235533_LinkForCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607100325172_ScheduleEntity.resx">
+      <DependentUpon>201607100325172_ScheduleEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,6 +18,11 @@ namespace GeekDaysEdu
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //    name: "Category",
+            //    url: "Category/{id}",
+            //    defaults: new { controller = "Category", action = "Index" });
         }
     }
 }

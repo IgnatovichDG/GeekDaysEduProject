@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Запланировать";
+}
+
+<div class="container">
+    <h4>Добавить в свое расписание курс</h4>
+    <form method="post" action="~/Profile/AddToSchedule">
+        <div class="item">
+            <label>День недели</label>
+            <select class="form-control" name="day">
+                <option value="Понедельник">Понедельник</option>
+                <option value="Вторник">Вторник</option>
+                <option value="Среда">Среда</option>
+                <option value="Четверг">Четверг</option>
+                <option value="Пятница">Пятница</option>
+                <option value="Суббота">Суббота</option>
+                <option value="Воскресенье">Воскресенье</option>
+            </select>
+        </div>
+        <div class="item">
+            <label>Время</label>
+            <input type="number" name="hours"/>:<input type="number" name="minutes"/>
+        </div>
+        <input type="submit" class="btn btn-primary"/>
+    </form>
+</div>
