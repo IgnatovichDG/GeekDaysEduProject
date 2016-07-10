@@ -22,8 +22,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Главная", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О нас", "About", "Home")</li>
                     <li>@Html.ActionLink("Курсы", "Categories", "Category")</li>
+                    <li>@Html.ActionLink("Мои курсы", "Index", "Profile")
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
