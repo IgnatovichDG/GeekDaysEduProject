@@ -27,5 +27,20 @@ namespace GeekDaysEdu.Controllers
             }
             return View(courses);
         }
+
+        public ActionResult MarkCompleted(string id)
+        {
+            int courseId = int.Parse(id);
+            var userId = User.Identity.GetUserId();
+            using (var db = new Context())
+            {
+                var link = db.LinkUsersCourses.First(l => l.UserId == userId && l.ResourceModel.ResourceId == courseId);
+                link.Status = 1;
+                db.LinkUsersCourses.Attach(link);
+                db.Entry(link).Property(l => l.Status).IsModified = true;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

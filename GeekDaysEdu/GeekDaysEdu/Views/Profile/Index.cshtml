@@ -17,11 +17,12 @@
             {
                 case 0:
                     <p style="color: #aaaaaa">Проходит</p>
-                    <a href="@res.ResourceModel.URL"><div class="btn btn-info">К курсу</div></a>
-                    <a href="#"><div class="btn btn-warning">Пройден</div></a>
+                    <a target="_blank" href="@res.ResourceModel.URL"><div class="btn btn-info">К курсу</div></a>
+                    <a href="~/Profile/MarkCompleted/@res.ResourceModel.ResourceId"><div class="btn btn-warning">Пройден</div></a>
                     break;
                 case 1:
-                    <small style="color: #aaaaaa">Пройден</small>
+                    <p style="color: #aaaaaa">Пройден</p>
+                    <a target="_blank" href="@res.ResourceModel.URL"><div class="btn btn-info">К курсу</div></a>
                     break;
             }
 
