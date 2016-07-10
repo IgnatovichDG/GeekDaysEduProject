@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNet.Identity
+@model System.Collections.Generic.List<GeekDaysEdu.Models.Schedule>
+
+@{
+    ViewBag.Title = "Расписание";
+}
+
+
+<div class="container">
+    <h4>Расписание пользователя @User.Identity.GetUserName()</h4>
+    <hr />
+    <div class="row row-eq-height">
+        @foreach (string day in ViewBag.Days)
+        {
+            <div class="col-md-6 row-eq-height" style="height: 230px; overflow-y: auto">
+                <h5>@day</h5>
+                <hr/>
+                @{ var coursesForDay = Model.Where(s => s.Day == day).OrderBy(s => s.Time);}
+                @if (coursesForDay.Any())
+                {
+                    foreach (var course in Model.Where(s => s.Day == day).OrderBy(s => s.Time))
+                     {
+                         <a target="_blank" href="@course.Link.ResourceModel.URL"><h6>@course.Link.ResourceModel.Name</h6></a>
+                         <p>@course.Time</p>
+                         <br/>
+                     }
+                }
+                else
+                {
+                    <p>На данный день курсов не найдено...</p>
+                }
+            </div>
+        }
+        
+    </div>
+</div>

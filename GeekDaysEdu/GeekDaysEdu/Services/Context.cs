@@ -17,5 +17,6 @@ namespace GeekDaysEdu
         public DbSet<CommentModel> CommentModels { get; set; }
         public DbSet<CategoryModel> CategoryModels { get; set; }
         public DbSet<Link> LinkUsersCourses { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
     }
 }
