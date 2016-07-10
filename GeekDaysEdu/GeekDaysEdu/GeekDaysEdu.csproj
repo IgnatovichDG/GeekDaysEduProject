@@ -196,9 +196,14 @@
     <Compile Include="Migrations\201607100325172_ScheduleEntity.Designer.cs">
       <DependentUpon>201607100325172_ScheduleEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607101110353_AddLinksForTelegram.cs" />
+    <Compile Include="Migrations\201607101110353_AddLinksForTelegram.Designer.cs">
+      <DependentUpon>201607101110353_AddLinksForTelegram.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\Link.cs" />
+    <Compile Include="Models\LinkChatUser.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Services\Context.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -358,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607100325172_ScheduleEntity.resx">
       <DependentUpon>201607100325172_ScheduleEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607101110353_AddLinksForTelegram.resx">
+      <DependentUpon>201607101110353_AddLinksForTelegram.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
