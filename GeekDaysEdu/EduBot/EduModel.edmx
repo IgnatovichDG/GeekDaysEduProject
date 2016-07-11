@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="geekdaysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryModels">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CommentModels">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="PostDate" Type="datetime" Nullable="false" />
+          <Property Name="Userid" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LinkChatUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" />
+          <Property Name="ChatId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Links">
+          <Key>
+            <PropertyRef Name="LinkId" />
+          </Key>
+          <Property Name="LinkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ResourceModel_ResourceId" Type="int" />
+        </EntityType>
+        <EntityType Name="ResourceModels">
+          <Key>
+            <PropertyRef Name="ResourceId" />
+          </Key>
+          <Property Name="ResourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="Disciption" Type="nvarchar(max)" />
+          <Property Name="LinkToImg" Type="nvarchar(max)" />
+          <Property Name="Score" Type="float" Nullable="false" />
+          <Property Name="Category_CategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="Schedules">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day" Type="nvarchar(max)" />
+          <Property Name="Time" Type="nvarchar(max)" />
+          <Property Name="Link_LinkId" Type="int" />
+        </EntityType>
+        <Association Name="FK_dbo_Links_dbo_ResourceModels_ResourceModel_ResourceId">
+          <End Role="ResourceModels" Type="Self.ResourceModels" Multiplicity="0..1" />
+          <End Role="Links" Type="Self.Links" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResourceModels">
+              <PropertyRef Name="ResourceId" />
+            </Principal>
+            <Dependent Role="Links">
+              <PropertyRef Name="ResourceModel_ResourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ResourceModels_dbo_CategoryModels_Category_CategoryID">
+          <End Role="CategoryModels" Type="Self.CategoryModels" Multiplicity="0..1" />
+          <End Role="ResourceModels" Type="Self.ResourceModels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryModels">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ResourceModels">
+              <PropertyRef Name="Category_CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Schedules_dbo_Links_Link_LinkId">
+          <End Role="Links" Type="Self.Links" Multiplicity="0..1" />
+          <End Role="Schedules" Type="Self.Schedules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Links">
+              <PropertyRef Name="LinkId" />
+            </Principal>
+            <Dependent Role="Schedules">
+              <PropertyRef Name="Link_LinkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="geekdaysModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryModels" EntityType="Self.CategoryModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentModels" EntityType="Self.CommentModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinkChatUsers" EntityType="Self.LinkChatUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Links" EntityType="Self.Links" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResourceModels" EntityType="Self.ResourceModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedules" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Links_dbo_ResourceModels_ResourceModel_ResourceId" Association="Self.FK_dbo_Links_dbo_ResourceModels_ResourceModel_ResourceId">
+            <End Role="ResourceModels" EntitySet="ResourceModels" />
+            <End Role="Links" EntitySet="Links" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ResourceModels_dbo_CategoryModels_Category_CategoryID" Association="Self.FK_dbo_ResourceModels_dbo_CategoryModels_Category_CategoryID">
+            <End Role="CategoryModels" EntitySet="CategoryModels" />
+            <End Role="ResourceModels" EntitySet="ResourceModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Schedules_dbo_Links_Link_LinkId" Association="Self.FK_dbo_Schedules_dbo_Links_Link_LinkId">
+            <End Role="Links" EntitySet="Links" />
+            <End Role="Schedules" EntitySet="Schedules" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="geekdaysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryModel">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ResourceModels" Relationship="Self.FK_dbo_ResourceModels_dbo_CategoryModels_Category_CategoryID" FromRole="CategoryModels" ToRole="ResourceModels" />
+        </EntityType>
+        <EntityType Name="CommentModel">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Userid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LinkChatUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChatId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Link">
+          <Key>
+            <PropertyRef Name="LinkId" />
+          </Key>
+          <Property Name="LinkId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ResourceModel_ResourceId" Type="Int32" />
+          <NavigationProperty Name="ResourceModel" Relationship="Self.FK_dbo_Links_dbo_ResourceModels_ResourceModel_ResourceId" FromRole="Links" ToRole="ResourceModels" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK_dbo_Schedules_dbo_Links_Link_LinkId" FromRole="Links" ToRole="Schedules" />
+        </EntityType>
+        <EntityType Name="ResourceModel">
+          <Key>
+            <PropertyRef Name="ResourceId" />
+          </Key>
+          <Property Name="ResourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Disciption" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinkToImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Score" Type="Double" Nullable="false" />
+          <Property Name="Category_CategoryID" Type="Int32" />
+          <NavigationProperty Name="CategoryModel" Relationship="Self.FK_dbo_ResourceModels_dbo_CategoryModels_Category_CategoryID" FromRole="ResourceModels" ToRole="CategoryModels" />
+          <NavigationProperty Name="Links" Relationship="Self.FK_dbo_Links_dbo_ResourceModels_ResourceModel_ResourceId" FromRole="ResourceModels" ToRole="Links" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Link_LinkId" Type="Int32" />
+          <NavigationProperty Name="Link" Relationship="Self.FK_dbo_Schedules_dbo_Links_Link_LinkId" FromRole="Schedules" ToRole="Links" />
+        </EntityType>
+        <Association Name="FK_dbo_ResourceModels_dbo_CategoryModels_Category_CategoryID">
+          <End Role="CategoryModels" Type="Self.CategoryModel" Multiplicity="0..1" />
+          <End Role="ResourceModels" Type="Self.ResourceModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryModels">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="ResourceModels">
+              <PropertyRef Name="Category_CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Links_dbo_ResourceModels_ResourceModel_ResourceId">
+          <End Role="ResourceModels" Type="Self.ResourceModel" Multiplicity="0..1" />
+          <End Role="Links" Type="Self.Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResourceModels">
+              <PropertyRef Name="ResourceId" />
+            </Principal>
+            <Dependent Role="Links">
+              <PropertyRef Name="ResourceModel_ResourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Schedules_dbo_Links_Link_LinkId">
+          <End Role="Links" Type="Self.Link" Multiplicity="0..1" />
+          <End Role="Schedules" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Links">
+              <PropertyRef Name="LinkId" />
+            </Principal>
+            <Dependent Role="Schedules">
+              <PropertyRef Name="Link_LinkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="geekdaysEntities_new" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="CategoryModels" EntityType="Self.CategoryModel" />
+          <EntitySet Name="CommentModels" EntityType="Self.CommentModel" />
+          <EntitySet Name="LinkChatUsers" EntityType="Self.LinkChatUser" />
+          <EntitySet Name="Links" EntityType="Self.Link" />
+          <EntitySet Name="ResourceModels" EntityType="Self.ResourceModel" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <AssociationSet Name="FK_dbo_ResourceModels_dbo_CategoryModels_Category_CategoryID" Association="Self.FK_dbo_ResourceModels_dbo_CategoryModels_Category_CategoryID">
+            <End Role="CategoryModels" EntitySet="CategoryModels" />
+            <End Role="ResourceModels" EntitySet="ResourceModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Links_dbo_ResourceModels_ResourceModel_ResourceId" Association="Self.FK_dbo_Links_dbo_ResourceModels_ResourceModel_ResourceId">
+            <End Role="ResourceModels" EntitySet="ResourceModels" />
+            <End Role="Links" EntitySet="Links" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Schedules_dbo_Links_Link_LinkId" Association="Self.FK_dbo_Schedules_dbo_Links_Link_LinkId">
+            <End Role="Links" EntitySet="Links" />
+            <End Role="Schedules" EntitySet="Schedules" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="geekdaysModelStoreContainer" CdmEntityContainer="geekdaysEntities_new">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="geekdaysModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryModels">
+            <EntityTypeMapping TypeName="geekdaysModel.CategoryModel">
+              <MappingFragment StoreEntitySet="CategoryModels">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentModels">
+            <EntityTypeMapping TypeName="geekdaysModel.CommentModel">
+              <MappingFragment StoreEntitySet="CommentModels">
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LinkChatUsers">
+            <EntityTypeMapping TypeName="geekdaysModel.LinkChatUser">
+              <MappingFragment StoreEntitySet="LinkChatUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Links">
+            <EntityTypeMapping TypeName="geekdaysModel.Link">
+              <MappingFragment StoreEntitySet="Links">
+                <ScalarProperty Name="LinkId" ColumnName="LinkId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ResourceModel_ResourceId" ColumnName="ResourceModel_ResourceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResourceModels">
+            <EntityTypeMapping TypeName="geekdaysModel.ResourceModel">
+              <MappingFragment StoreEntitySet="ResourceModels">
+                <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Disciption" ColumnName="Disciption" />
+                <ScalarProperty Name="LinkToImg" ColumnName="LinkToImg" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Category_CategoryID" ColumnName="Category_CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="geekdaysModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedules">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Link_LinkId" ColumnName="Link_LinkId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
